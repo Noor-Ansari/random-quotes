@@ -1,38 +1,65 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(to top left, #33ccff 0%, #14213d 100%);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.quote-container{
+  display: grid;
+  place-items: center;
+  background-color: #e5e5e5;
+  margin-bottom: 16px;
+  width: 50vw; 
+  height: auto;
+  min-height: 40vh; 
+  padding: 32px;
+  transition: all 0.2s ease-in-out;
+  border : 5px solid #14213d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.quote-container:hover{
+  background-color: #d1d1d1;
+}
+
+.quote-container > q{
+font-size: clamp(20px, 4vw, 32px);
+text-align: center;
+transition: all 0.5s ease-in-out;
+}
+
+.quote-container > p{
+  background-color: #fca311;
+  padding : clamp(4px, 2vw, 16px);
+  text-transform: uppercase;
+  font-size: clamp(10px, 2vw, 22px);
+}
+
+
+.btn {
+  padding : clamp(6px, 3vw, 16px);
+  font-size: clamp(12px, 2vw, 20px);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  background-color: #14213d;
+  color : #ffffff;
+  border : none;
+}
+
+.btn:hover{
+  background-color: #27395f;
+  cursor: pointer;
+}
+.btn:focus{
+outline : none;
+}
+
+@media only screen and (max-width : 500px){
+  .quote-container{
+    width: 80vw;
+    min-height: 30vh;
   }
 }

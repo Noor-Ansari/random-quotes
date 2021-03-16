@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [quotes, setQuotes] = useState([]);
+  const [randomQuote, setRandomQuote] = useState({
+    text: "To be the best, You must be able to handle the worst",
+    author: "Wilson Kanadi",
+  });
+
+  useEffect(() => {
+    fetch("https://type.fit/api/quotes")
+      .then((response) => response.json())
+      .then((data) => setQuotes(data));
+  }, []);
+
+  const getRandomQuote = () => {
+    setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+<div className="quote-container">
+        <q>{randomQuote?.text}</q>
+        <p>{randomQuote?.author ? randomQuote?.author : "Anonymous"}</p>
+      </div>
+
+
+
+     
+      <button className="btn" onClick={getRandomQuote}>
+        random quote
+      </button>
     </div>
   );
 }
